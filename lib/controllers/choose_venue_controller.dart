@@ -21,4 +21,8 @@ class ChooseVenueController extends GetxController {
       bgPic: galleryTwo,
     ),
   ];
+
+  void toSelectTicket() {
+    Get.toNamed('/selectTicket');
+  }
 }

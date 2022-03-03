@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:event/shared/color_pallet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class SelectTicketController extends GetxController {
@@ -16,5 +20,27 @@ class SelectTicketController extends GetxController {
       freeQuantity++;
       update();
     }
+  }
+
+  String bookingId = '';
+  void generateBookingId() {
+    final id = Random().nextInt(999999);
+    bookingId = id.toString();
+  }
+
+// to show bottomSheet
+  void showBottomSheet({required Widget child}) {
+    Get.bottomSheet(
+      child,
+      enableDrag: false,
+      isDismissible: false,
+    );
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.toNamed('/checkOut');
+    });
+  }
+
+  void toCheckOut() {
+    Get.toNamed('/checkOut');
   }
 }

@@ -14,4 +14,8 @@ class VenueController extends GetxController {
     VenueModel(pic: restaurants, title: 'Restaurants'),
     VenueModel(pic: roofTops, title: 'Roof Tops'),
   ];
+
+  void toChooseVenueView(String pic) {
+    Get.toNamed('/chooseVenue', arguments: pic);
+  }
 }

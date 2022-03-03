@@ -129,31 +129,34 @@ class CityViews extends StatelessWidget {
                               itemCount: controller.listOfCities.length,
                               itemBuilder: (context, index) {
                                 final city = controller.listOfCities[index];
-                                return Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: whiteColor,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundImage: AssetImage(city.bgPic),
-                                        maxRadius: 40,
-                                      ),
-                                      const SizedBox(height: 15),
-                                      Text(
-                                        city.name,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: blackColor,
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w600,
+                                return GestureDetector(
+                                  onTap: controller.toVenueView,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: whiteColor,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundImage: AssetImage(city.bgPic),
+                                          maxRadius: 40,
                                         ),
-                                      )
-                                    ],
+                                        const SizedBox(height: 15),
+                                        Text(
+                                          city.name,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            color: blackColor,
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 );
                               },

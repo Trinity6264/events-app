@@ -14,4 +14,8 @@ class CityController extends GetxController {
     CityModel(name: 'Island', bgPic: lagos),
     CityModel(name: 'Mainland', bgPic: mainLand),
   ];
+
+  void toVenueView() {
+    Get.toNamed('/venue');
+  }
 }

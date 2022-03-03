@@ -342,7 +342,7 @@ class CheckoutViews extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                       primary: greenColor,
                                     ),
-                                    onPressed: () {},
+                                    onPressed: controller.toCheckOut,
                                     child: const Text('Complete Order'),
                                   ),
                                 ),
@@ -381,6 +381,4 @@ class CheckoutViews extends StatelessWidget {
       ),
     );
   }
-
-  
 }

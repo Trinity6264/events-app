@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
 import 'package:event/controllers/main_page_controllers/notification_controller.dart';
 import 'package:event/controllers/select_ticket_controller.dart';
 import 'package:event/shared/color_pallet.dart';
 import 'package:event/shared/dot_lines.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+
+import '../shared/images_pallet.dart';
 
 class SelectTicketViews extends StatelessWidget {
   const SelectTicketViews({Key? key}) : super(key: key);
@@ -691,7 +695,7 @@ class SelectTicketViews extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    height: _size.height * 0.1 - 10,
+                    height: _size.height * 0.1,
                     width: double.infinity,
                     color: whiteColor,
                     child: Row(
@@ -719,7 +723,83 @@ class SelectTicketViews extends StatelessWidget {
                           ],
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.generateBookingId();
+                            controller.showBottomSheet(
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: whiteColor,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                  ),
+                                ),
+                                child: SingleChildScrollView(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  child: Container(
+                                    width: double.infinity,
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 40,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          width: double.infinity,
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 30,
+                                          ),
+                                          child: QrImage(
+                                            data: controller.bookingId,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 8.0,
+                                            bottom: 8.0,
+                                          ),
+                                          child: Text(
+                                            'Your Booking Id: #${controller.bookingId}',
+                                          ),
+                                        ),
+                                        Image.asset(greenCheck),
+                                        const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Your Booking is completed',
+                                            style: TextStyle(
+                                              color: blackColor,
+                                              fontWeight: FontWeight.w800,
+                                              fontSize: 20.0,
+                                            ),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                            bottom: 40,
+                                            right: 20,
+                                            left: 20,
+                                          ),
+                                          child: Text(
+                                            'You will be redirected to your ticket in 5 second',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: blackColor,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 18.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: purpleColor,
                           ),
