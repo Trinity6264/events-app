@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainPageController extends GetxController {
-  int currentIndex = 4;
-  Widget currentPage = const CityViews();
-  final pageBucket = PageStorageBucket();
+  int currentIndex = 0;
+  
 
-  void onChanged(int index, Widget page) {
+  void onChanged(int index) {
     currentIndex = index;
-    currentPage = page;
+    
     update();
   }
 }

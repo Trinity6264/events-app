@@ -1,10 +1,15 @@
-import 'package:event/controllers/main_page_controllers/city_controller.dart';
-import 'package:event/shared/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:event/controllers/main_page_controllers/city_controller.dart';
+import 'package:event/shared/color_pallet.dart';
+
 class CityViews extends StatelessWidget {
-  const CityViews({Key? key}) : super(key: key);
+  final int id;
+  const CityViews({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +135,7 @@ class CityViews extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final city = controller.listOfCities[index];
                                 return GestureDetector(
-                                  onTap: controller.toVenueView,
+                                  onTap: () => controller.toVenueView(id),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
@@ -139,10 +144,12 @@ class CityViews extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         CircleAvatar(
-                                          backgroundImage: AssetImage(city.bgPic),
+                                          backgroundImage:
+                                              AssetImage(city.bgPic),
                                           maxRadius: 40,
                                         ),
                                         const SizedBox(height: 15),

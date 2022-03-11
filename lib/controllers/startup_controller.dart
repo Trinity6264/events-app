@@ -6,7 +6,7 @@ class StartupController extends GetxController {
     await Future.delayed(
       const Duration(seconds: 3),
       () {
-        Get.offNamed('/login');
+        Get.offNamed('/mainPage');
       },
     );
   }

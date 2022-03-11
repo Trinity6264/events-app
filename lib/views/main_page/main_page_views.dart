@@ -8,6 +8,8 @@ import 'package:event/views/main_page/ticket_views.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import 'choose_city_nested_routes/choose_city_wrapper.dart';
+
 class MainPageViews extends StatelessWidget {
   const MainPageViews({Key? key}) : super(key: key);
 
@@ -19,16 +21,21 @@ class MainPageViews extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           backgroundColor: whiteColor,
           body: SafeArea(
-            child: PageStorage(
-              bucket: controller.pageBucket,
-              child: controller.currentPage,
-            ),
-          ),
+              child: IndexedStack(
+            index: controller.currentIndex,
+            children: const [
+              ChooseCityWrapper(),
+              SearchViews(),
+              TicketViews(),
+              NotificationViews(),
+              ProfileViews(),
+            ],
+          )),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              controller.onChanged(4, const CityViews());
+              controller.onChanged(0);
             },
             backgroundColor: violetColor,
             child: const Icon(Icons.home, color: whiteColor),
@@ -47,21 +54,21 @@ class MainPageViews extends StatelessWidget {
                       MaterialButton(
                         minWidth: 40,
                         onPressed: () {
-                          controller.onChanged(0, const SearchViews());
+                          controller.onChanged(1);
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.search,
-                              color: controller.currentIndex == 0
+                              color: controller.currentIndex == 1
                                   ? violetColor
                                   : grayColor,
                             ),
                             Text(
                               'Search',
                               style: TextStyle(
-                                color: controller.currentIndex == 0
+                                color: controller.currentIndex == 1
                                     ? violetColor
                                     : grayColor,
                               ),
@@ -72,21 +79,21 @@ class MainPageViews extends StatelessWidget {
                       MaterialButton(
                         minWidth: 40,
                         onPressed: () {
-                          controller.onChanged(1, const TicketViews());
+                          controller.onChanged(2);
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.airplane_ticket,
-                              color: controller.currentIndex == 1
+                              color: controller.currentIndex == 2
                                   ? violetColor
                                   : grayColor,
                             ),
                             Text(
                               'Ticket',
                               style: TextStyle(
-                                color: controller.currentIndex == 1
+                                color: controller.currentIndex == 2
                                     ? violetColor
                                     : grayColor,
                               ),
@@ -98,25 +105,27 @@ class MainPageViews extends StatelessWidget {
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       MaterialButton(
+                        padding: const EdgeInsets.only(left: 10.0, right: 5.0),
                         minWidth: 40,
                         onPressed: () {
-                          controller.onChanged(2, const NotificationViews());
+                          controller.onChanged(3);
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.notifications_none,
-                              color: controller.currentIndex == 2
+                              color: controller.currentIndex == 3
                                   ? violetColor
                                   : grayColor,
                             ),
                             Text(
                               'Notification',
                               style: TextStyle(
-                                color: controller.currentIndex == 2
+                                color: controller.currentIndex == 3
                                     ? violetColor
                                     : grayColor,
                               ),
@@ -127,21 +136,21 @@ class MainPageViews extends StatelessWidget {
                       MaterialButton(
                         minWidth: 40,
                         onPressed: () {
-                          controller.onChanged(3, const ProfileViews());
+                          controller.onChanged(4);
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.person,
-                              color: controller.currentIndex == 3
+                              color: controller.currentIndex == 4
                                   ? violetColor
                                   : grayColor,
                             ),
                             Text(
                               'Profile',
                               style: TextStyle(
-                                color: controller.currentIndex == 3
+                                color: controller.currentIndex == 4
                                     ? violetColor
                                     : grayColor,
                               ),

@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+
 import 'package:event/bindings/startup_binding.dart';
 import 'package:event/views/checkout_views.dart';
-import 'package:event/views/choose_venue_views.dart';
 import 'package:event/views/forgot_password_views.dart';
 import 'package:event/views/login_views.dart';
-import 'package:event/views/main_page/city_views.dart';
 import 'package:event/views/main_page/main_page_views.dart';
 import 'package:event/views/main_page/notification_views.dart';
 import 'package:event/views/main_page/profile_views.dart';
@@ -13,9 +15,6 @@ import 'package:event/views/main_page/venue_views.dart';
 import 'package:event/views/select_ticket_views.dart';
 import 'package:event/views/signup_views.dart';
 import 'package:event/views/startup_views.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Events',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -51,11 +51,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/ticket', page: () => const TicketViews()),
         GetPage(name: '/notification', page: () => const NotificationViews()),
         GetPage(name: '/profile', page: () => const ProfileViews()),
-        GetPage(name: '/city', page: () => const CityViews()),
         GetPage(name: '/checkOut', page: () => const CheckoutViews()),
-        GetPage(name: '/chooseVenue', page: () => const ChooseVenueViews()),
         GetPage(name: '/selectTicket', page: () => const SelectTicketViews()),
-        GetPage(name: '/venue', page: () => const VenueViews()),
       ],
     );
   }

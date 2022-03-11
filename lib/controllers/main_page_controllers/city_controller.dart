@@ -15,7 +15,7 @@ class CityController extends GetxController {
     CityModel(name: 'Mainland', bgPic: mainLand),
   ];
 
-  void toVenueView() {
-    Get.toNamed('/venue');
+  void toVenueView(int id) {
+    Get.toNamed('/venue', id: id);
   }
 }

@@ -1,10 +1,15 @@
-import 'package:event/controllers/main_page_controllers/venue_controller.dart';
-import 'package:event/shared/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:event/controllers/main_page_controllers/venue_controller.dart';
+import 'package:event/shared/color_pallet.dart';
+
 class VenueViews extends StatelessWidget {
-  const VenueViews({Key? key}) : super(key: key);
+  final int id;
+  const VenueViews({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
   static final controller = Get.find<VenueController>();
   @override
   Widget build(BuildContext context) {
@@ -131,7 +136,10 @@ class VenueViews extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      controller.toChooseVenueView(city.pic);
+                                      controller.toChooseVenueView(
+                                        city.pic,
+                                        id,
+                                      );
                                     },
                                     child: Container(
                                       width: 160,

@@ -53,7 +53,7 @@ class NotificationViews extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         const Text(
-                          'My Profile',
+                          'My Notification',
                           style: TextStyle(
                             color: whiteColor,
                             fontSize: 22.0,
@@ -114,7 +114,7 @@ class NotificationViews extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return Container(
                             width: double.infinity,
-                            height: _size.height * 0.1,
+                            height: _size.height * 0.1 + 30,
                             margin: const EdgeInsets.symmetric(
                               vertical: 10,
                               horizontal: 10,
@@ -170,7 +170,6 @@ class NotificationViews extends StatelessWidget {
                                           'Date-12-02-2022',
                                           style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                         Text(
@@ -179,7 +178,7 @@ class NotificationViews extends StatelessWidget {
                                           style: TextStyle(
                                             color: blackColor,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 20.0,
+                                            fontSize: 15.0,
                                           ),
                                         ),
                                         Text(
@@ -187,8 +186,6 @@ class NotificationViews extends StatelessWidget {
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                             color: blackColor,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15.0,
                                           ),
                                         ),
                                       ],
